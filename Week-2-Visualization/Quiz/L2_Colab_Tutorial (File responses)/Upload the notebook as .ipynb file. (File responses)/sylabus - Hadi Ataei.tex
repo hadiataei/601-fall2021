@@ -1,0 +1,440 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify Course title, instructor name, semester here %%%%%%%%
+
+\title{DATA 601-1 \& 601-4: Introduction to Data Science}
+\author{Hadi Ataei}
+\date{Fall 21}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[sc]{mathpazo}
+\linespread{1.05} % Palatino needs more leading (space between lines)
+\usepackage[T1]{fontenc}
+\usepackage[mmddyyyy]{datetime}% http://ctan.org/pkg/datetime
+\usepackage{advdate}% http://ctan.org/pkg/advdate
+\newdateformat{syldate}{\twodigit{\THEMONTH}/\twodigit{\THEDAY}}
+\newsavebox{\MONDAY}\savebox{\MONDAY}{Mon}% Mon
+\newcommand{\week}[1]{%
+%  \cleardate{mydate}% Clear date
+% \newdate{mydate}{\the\day}{\the\month}{\the\year}% Store date
+  \paragraph*{\kern-2ex\quad #1, \syldate{\today} - \AdvanceDate[4]\syldate{\today}:}% Set heading  \quad #1
+%  \setbox1=\hbox{\shortdayofweekname{\getdateday{mydate}}{\getdatemonth{mydate}}{\getdateyear{mydate}}}%
+  \ifdim\wd1=\wd\MONDAY
+    \AdvanceDate[7]
+  \else
+    \AdvanceDate[7]
+  \fi%
+}
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+
+\lhead{}
+\chead{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify header here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\rhead{\footnotesize UMBC DATA 601}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage{array, xcolor}
+\usepackage{color,hyperref}
+\definecolor{clemsonorange}{HTML}{EA6A20}
+\hypersetup{colorlinks,breaklinks,linkcolor=clemsonorange,urlcolor=clemsonorange,anchorcolor=clemsonorange,citecolor=black}
+
+\begin{document}
+
+\maketitle
+
+\blankline
+
+\begin{tabular*}{.93\textwidth}{@{\extracolsep{\fill}}lr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify information %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+E-mail: \texttt{hadi@umbc.edu} & Web: \href{https://github.com/hadiataei/601-fall2021}{\tt\bf Course's Github Page}  \\
+
+ Office Hours: \href{https://calendly.com/ataei/15min}{\tt\bf By Appointment} &  \\Class Hours: \\Monday 7:10pm-9:40pm (in-person, class number 14958) and \\Wednesday 7:10pm - 9:40pm (online, class number 15378)\\
+
+ Office: online \\
+ & \\
+\hline
+\end{tabular*}
+
+
+\vspace{5 mm}
+
+\begin{itemize}
+	\item I respond to messages within 48 hours, excluding breaks and weekends.
+	\item If your question is something about your code or something we covered in class then please don't send me email, instead schedule an appointment.
+	\item I am available after class for questions and help. Outside of that time-frame, please schedule an appointment.
+\end{itemize}
+
+
+\section*{Course Description}
+
+This class prepares students for more advanced topics in data science and introduces some of the tools and notions which are frequently used in the industry. Topics include: a review of Python programming and most fundamental modules; acquisition, handling, and working with different data; exploratory data analysis with statistics; data visualization and web scraping; life cycle of data science projects and different roles in a data science team, and ethical issues in data science.
+
+\section*{Student Learning Outcomes}
+
+By the end of this course, successful students will be able to:
+\begin{enumerate}
+\item Describe the key activities in a data science project. 
+\item Use popular Python packages for data visualization.
+\item Use Pandas library for data transformations.
+\item Evaluate the quality of a dataset for a given data science project.
+\item Create functions and programs that clean and transform raw data sets.
+\item Load, read and write from different data sources. 
+\item Apply basic statistical knowledge in a data science project to test and verify hypotheses.
+\item Create new data sets by combining data from different sources. 
+\item Understand the role of modeling in a data science project.
+\item Apply best practices of communication for reporting upon completing a data science project.
+\end{enumerate}
+
+\section*{Format and Procedures}
+
+This will be a course which is taught in-person (Monday) and online (Wednesday) and depending on the pandemic situation there might be online(synchronous) components for the Monday class. Computers with internet connection and working cameras are required during the lectures. We will also be using a software called \href{https://research.google.com/colaboratory/faq.html}{Colaboratory Notebooks} as the main medium of delivery for the lecture materials. For more information and to get  familiarity with it, \href{https://colab.research.google.com/notebooks/intro.ipynb}{please check this tutorial.}. In addition to these:
+
+\begin{enumerate}
+	\item Students will complete assigned homework, readings, quizzes. 
+	\item Students will engage with hands-on labs and practical exercises to prepare them for challenges they may encounter in the workplace.
+	\item Students will occasionally present their solutions to homework assignments
+in class.
+	\item Students who are participating in the class online should be able to share both their video and audio. 
+\end{enumerate}
+\section*{Course Requirements}
+\subsection*{Textbook}
+We will not be following one single textbook in this course. Weekly reading materials and relevant course materials will be shared beforehand via Blackboard and/or the course's Github repository. In addition to these, I will be following the logical structures of the following textbook.
+\begin{itemize}
+\item \href{https://jakevdp.github.io/PythonDataScienceHandbook/}{\tt\bf Python Data Science Handbook}: We will follow this book in the programming with Python parts of the course. The sections related to Pandas library are especially well written.
+\end{itemize}
+\subsection*{Hardware Requirements}
+\begin{itemize}
+	\item Web browser capable of running technical notebooks
+	\item A computer with sufficient internet speed for online lectures. Make sure that your computer has video and microphone access.
+\end{itemize}
+
+\subsection*{Quizzes}
+
+There will be some quizzes in the beginning of the lectures to assess students' understanding of the reading assignments. Also, at the end of some lectures, students will be given quizzes to assess their understanding of the covered material.
+\subsection*{Homework}
+
+There will be homework assigned to students roughly every two weeks. Depending on the scale of the homework, students will be given one or two weeks to submit their homework and other than exceptional circumstances this homework will be graded within a week.
+
+\subsection*{Attendance}
+
+In every lecture, I will take attendance at some point during the lecture. Students who miss this part of the lecture will be considered as absent and except for medical situations (or some other formal/written excuse) no excuse will be accepted for missing a class. Attendance will contribute to 10 percent of the final grade. 
+
+
+\section*{Grading}
+
+In the final grade, the assignments will have the following weights:
+
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Quizzes (9 quizzes total) & --- & 40\% \\
+		Homework (6 HW total)& --- & 50\% \\
+		Participation \& Engagement & --- & 10\% \\
+		\hline
+	\end{tabular}
+\end{center}
+\subsection*{Grading Distribution}
+Final letter grades will be assigned as follows: (Grades will be rounded upwards.)
+\newline
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		94-100 & --- & A\\
+		 93 - 90 & --- &  A- \\
+		 87 - 89 & --- &  B+ \\
+		 83 - 86 & --- &  B \\
+		 80 - 82 & --- &  B- \\
+		 77 - 79 & --- &  C+ \\
+		 73 - 76 & --- &  C \\
+		 70 - 72 & --- &  C- \\
+		 67 - 69 & --- &  D+ \\
+		 0 - 59 & --- & F \\
+		\hline
+	\end{tabular}
+
+\end{center}
+	
+% Fifth Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section*{Resources}
+UMBC provides a range of writing assistance, which can be found in the following:
+
+The Writing Center \href{https://lrc.umbc.edu/tutor/writing-center/ }{Writing Center}
+
+Research Guides \& Tutorials \href{https://lib.guides.umbc.edu/tutorial}{Research Guide} 
+
+Please visit \href{https://covid19.umbc.edu/}{ UMBC Policies and Resources during COVID-19}.
+
+
+
+\section*{Course Policies}
+
+\subsection*{During Class}
+
+\footnotesize{ Please be mindful that the COVID-19 pandemic is not over yet and everyone has different levels of concerns. This is why UMBC/USG policies constitutes a common denominator that I expect everyone to follow in my classes. I ask everyone to be proactive about this and do their fair share in order to keep our community safe and protected. Moreover if you have any concerns about this topic please don't hesitate to share it with me immediately.}
+
+\footnotesize{I understand that the electronic recording of notes will be important for class and so computers will be allowed in class. Please refrain from using computers for anything but activities related to the class. Phones are prohibited as they are rarely useful for anything in the course. Eating and drinking are allowed in class but please refrain from it affecting the course. Try not to eat your lunch in class as the classes are typically active.}
+
+\subsection*{Policies on Incomplete Grades and Late Assignments}
+Late/incomplete assignments will be accepted if an extension has been agreed to in advance. Emergency situations will be handled on a case by case basis with appropriate justification or documentation.
+\newline 
+Incomplete grades are granted only for extenuating circumstances and your request is made before the last week of class.
+
+\section*{Institutional Policies}
+
+\subsection*{Covid-19 Policies}
+Please see \href{https://docs.google.com/document/d/1xWWGAR8qEzKYr7qaVHoEhvO6lyXIyn6M3M7EFZPJQgA/edit?usp=sharing}{this Google doc} for UMBC Policies and Resources during COVID-19. 
+
+\subsection*{Academic Integrity and Honesty}
+
+By enrolling in this course, each student assumes the responsibilities of an active participant in UMBC’s scholarly community in which everyone's academic work and behavior are held to the highest standards of honesty.  Cheating, fabrication, plagiarism, and helping other to commit these acts are all forms of academic dishonesty, and they are wrong.  Academic misconduct could result in disciplinary action that may include, but is not limited to failure, suspension or dismissal.  
+\newline
+Refer to the UMBC policy on Academic Integrity: \href{https://catalog.umbc.edu/content.php?catoid=17&navoid=879#academic-integrity}{UMBC Academic Integrity Policy}
+
+
+\subsection*{Diversity Statement}
+It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit. It is my intent to present materials and activities that are respectful of diversity: gender identity, sexuality, disability, age, socioeconomic status, ethnicity, race, nationality, religion, and culture. Your suggestions are encouraged and appreciated. Please let me know ways to improve the effectiveness of the course for you personally, or for other students or student groups.
+
+\subsection*{Student Disability Services}
+
+UMBC is committed to eliminating discriminatory obstacles that may disadvantage students based on disability. Services for students with disabilities are provided for all students qualified under \href{https://en.wikipedia.org/wiki/Americans_with_Disabilities_Act_of_1990}{the Americans with Disabilities Act (ADA) of 1990}, \href{https://en.wikipedia.org/wiki/ADA_Amendments_Act_of_2008}{the ADAAA of 2009}, and \href{https://en.wikipedia.org/wiki/Section_504_of_the_Rehabilitation_Act}{Section 504 of the Rehabilitation Act} who request and are eligible for accommodations. The Office of Student Disability Services (SDS) is the UMBC department designated to coordinate reasonable accommodations that would allow students to have equal access and inclusion in all courses, programs, and activities of the University.
+If you have a documented disability and need to request academic accommodations, please register with the Office of Student Disability Services (SDS) as soon as possible. To begin the registration process please visit the SDS website and review the registration information, including disability documentation guidelines and how to submit the SDS registration form online using the confidential data management software called \href{https://sds.umbc.edu/accommodations/registering-with-sds/}{Accommodate}. 
+
+Once accommodations have been approved, you and your instructors will be notified via an emailed accommodation letter from the SDS office.  Both the SDS office and Shady Grove's \href{https://shadygrove.umd.edu/student-services/center-for-academic-success}{Center for Academic Success(CAS)} will work with you to ensure you receive the approved accommodations. If you have any questions or concerns, please contact the \href{https://sds.umbc.edu/}{Office of Student Disability Services SDS} via disAbility@umbc.edu or phone at 410-455-2459. Please note that accommodations are not retroactive and begin once SDS sends an approved accommodation letter.
+For more information on the services CAS provides, please contact Mary Gallagher (maryg@umd.edu) or visit \href{https://shadygrove.umd.edu/student-services/center-for-academic-success}{Student-Services/Center for  Academic Success}
+
+\subsection*{Title IX Statement}
+Any student who has experienced sexual harassment or assault, relationship violence, and/or stalking is encouraged to seek support and resources. There are a number of resources available to you. Please see \href{https://oei.umbc.edu/sample-title-ix-responsible-employee-syllabus-language/}{The Office of Equity and Inclusion Website} for recently updated UMBC Policies and Resources during COVID-19.
+
+With that said, as an instructor, I am considered a Responsible Employee, as per \href{https://oei.umbc.edu/umbcs-policy-on-prohibited-sexual-misconduct-interpersonal-violence-and-other-related-misconduct/}{UMBC's Interim Policy on Prohibited Sexual Misconduct, Interpersonal Violence, and Other Related Misconduct}. This means that while I am here to listen and support you, I am required to report disclosures of sexual assault, domestic violence, relationship violence, stalking, and/or gender-based harassment to the University's Title IX Coordinator. The purpose of these requirements is for the University to inform you of options, supports, and resources.
+
+You can utilize support and resources even if you do not want to take any further action. You will not be forced to file a police report, but please be aware, depending on the nature of the offense, the University may take action.
+\begin{itemize}
+	\item \href{https://counseling.umbc.edu/}{The Counseling Center}. phone: 410-455-27742 (M-F 8:30am - 5pm)
+	\item \href{https://uhs.umbc.edu/}{University Health Services}: 410-455-2542 (M-F 8:30am - 5pm)
+	\item For after-hours emergency consultation, call \href{https://police.umbc.edu/}{the police} at 410-455-5555
+\end{itemize}
+
+Other on-campus supports and resources:
+
+\begin{itemize}
+	\item \href{https://womenscenter.umbc.edu/}{The Women's Center}(available to students of all genders): 410-455-2714 (M-Th 9:30am -6pm, F 9:30am - 4pm)
+	\item \href{https://oei.umbc.edu/sexual-misconduct-policy-and-procedures/}{Title IX Coordinator}: 410-455-1606 (M-F 9am - 5pm)
+\end{itemize}
+If you need to speak with someone in confidence about an incident, UMBC has the following Confidential Resources available to support you:
+
+
+% Course Schedule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section*{Schedule and weekly learning goals}
+
+The schedule is tentative and subject to change. 
+% Set first date of the semester (for some reason this is a week before what comes up, but that's easy to get around)
+\SetDate[06/09/2021]
+\week{Week 01}  Introduction to DATA601 and data science
+\begin{itemize}
+\item Course logistics, resources and policies.
+\item Introduction and review of basic tools.
+\item Overview of the course: what you will learn and what we will not cover. 
+\item Coding Basics: Naming conventions, objects and their methods, built-in functions etc.
+\end{itemize}
+
+\week{Week 02} Basics of visualization with Python
+\begin{itemize}
+\item Visualization with matplotlib
+\item Figure, axis, titles, labels etc.
+\item Adding subplots to a figure
+\item Bar charts and box plots
+\end{itemize}
+
+\week{Week 03} Data transformations
+\begin{itemize}
+\item Installing and importing pandas
+\item Dataframes vs series
+\item Choosing an observation
+\item Choosing a variable
+\item Renaming, dropping a column, sorting values in a column
+\item Boolean mask and filtering
+\item Detecting missing values
+\item Describe, info, etc. 
+\end{itemize}
+
+\week{Week 04} Data Transformations - Part-II
+\begin{itemize}
+\item Operations on series: +/-/*, log, ranking, cutting etc.
+\item Grouping and aggregation
+\item Vectorized string operations
+\item Pivot tables
+\end{itemize}
+
+\week{Week 05} Exploratory data analysis
+\begin{itemize}
+\item Variation
+\item Typical values
+\item Unusual values
+\item Heatmaps
+\item Patterns and models
+\end{itemize}
+
+\week{Week 06} Loading and wrangling data
+\begin{itemize}
+\item Introductions to different data formats
+\item Reading csv, excel, html files
+\item Handling numbers 
+\item Handling strings
+\item Working with dates and times
+\item Tidying data
+\end{itemize}
+
+\week{Week 07} Relational data
+\begin{itemize}
+\item Merging, concatenation, joining datasets.
+\end{itemize}
+
+\week{Week 08} Working with strings
+\begin{itemize}
+\item String operations
+\item Exact matches
+\item fuzzy matches
+\end{itemize}
+
+\week{Week 09}  Working with date and time
+\begin{itemize}
+	\item Timezone handling
+	\item Moving Averages
+	\item Resampling methods for time series
+	\item Time series visualizations
+\end{itemize}
+\week{Week 10} Basics of object oriented programming 
+\begin{itemize}
+\item Introduction to classes and objects
+\item Global variables
+\item Inheritance
+\end{itemize}
+
+\week{Week 11} Web Scraping and API
+\begin{itemize}
+\item Basic HTML
+\item Best Practices of Web Scraping
+\item Use and Benefits of APIs
+\end{itemize}
+
+\week{Week 12} Modeling
+\begin{itemize}
+\item Place of modeling in a data science project
+\item Linear Regression
+\item Visualizing Models
+\end{itemize}
+
+\week{Week 13} Report and Commmunication
+\begin{itemize}
+\item Structure of a Data Analysis Write-up
+\item Project Structure and Deliverables
+\item Reproducibility
+\item Project Structure and Deliverables
+\end{itemize}
+
+\week{Week 14} Misc
+\begin{itemize}
+\item ...
+\end{itemize}
+
+\section*{Important administrative notes for students}
+
+\subsection*{Safety Protocols and Compliance}
+UMBC has set clear expectations for masking while on campus that include the requirement that you must wear a face mask that covers your nose and mouth in all classrooms regardless of your vaccination status. This is to protect your health and safety as well as the health and safety of your classmates, instructor, and the university community.   Anyone attending class without a mask or wearing one improperly will be asked by the instructor to put on a mask or fix their mask in the appropriate position. Any student that refuses to comply with this directive will be asked to leave the classroom immediately and failure to do so will result in the instructor requesting the assistance of the University Police. Students who refuse to wear masks may be referred to Student Conduct and Community Standards and may face disciplinary action for violations of the Code of Student Conduct, specifically, Rule 2: Behavior Which Jeopardizes the Health or Safety of Self or Others and Rule 16: Failure to Comply with the Request of a University Official. UMBC’s on-campus safety protocols, including masking requirements, are subject to change in response to the evolving situation with Covid-19.
+
+
+\subsection*{Accessibility and Disability Accommodations, Guidance and Resources }
+
+Accommodations for students with disabilities are provided for all students with a qualified disability under the Americans with Disabilities Act (ADA \& ADAAA) and Section 504 of the Rehabilitation Act who request and are eligible for accommodations. The Office of Student Disability Services (SDS) is the UMBC department designated to coordinate accommodations that creates equal access for students when barriers to participation exist in University courses, programs, or activities.
+
+If you have a documented disability and need to request academic accommodations in your courses, please refer to the SDS website at sds.umbc.edu for registration information and office procedures.
+
+SDS email: disAbility@umbc.edu
+
+SDS phone: (410) 455-2459
+
+If you will be using SDS approved accommodations in this class, please contact the instructor to discuss implementation of the accommodations. During remote instruction requirements due to COVID, communication and flexibility will be essential for success.
+
+\subsection*{Sexual Assault, Sexual Harassment, and Gender Based Violence and Discrimination}
+UMBC Policy and Federal law (Title IX) prohibit discrimination and harassment on the basis of sex, sexual orientation, and gender identity in University programs and activities. Any student who is impacted by sexual harassment, sexual assault, domestic violence, dating violence, stalking, sexual exploitation, gender discrimination, pregnancy discrimination, gender-based harassment or retaliation should contact the University’s Title IX Coordinator to make a report and/or access support and resources:
+Mikhel A. Kushner, Title IX Coordinator (she/they) 410-455-1250 (direct line), kushner@umbc.edu
+
+You can access support and resources even if you do not want to take any further action. You will not be forced to file a formal complaint or police report. Please be aware that the University may take action on its own if essential to protect the safety of the community.
+
+If you are interested in or thinking about making a report, please use the Online Reporting/Referral Form. Please note that, if you report anonymously,  the University’s ability to respond will be limited.
+
+\textbf{Notice that Faculty are Responsible Employees with Mandatory Reporting Obligations}:
+
+All faculty members are considered Responsible Employees, per UMBC’s Policy on Sexual Misconduct, Sexual Harassment, and Gender Discrimination. Faculty are therefore required to report any/ all available information regarding conduct falling under the Policy and violations of the Policy to the Title IX Coordinator, even if a student discloses an experience that occurred before attending UMBC and/or an incident that only involves people not affiliated with UMBC.  Reports are required regardless of the amount of detail provided and even in instances where support has already been offered or received.
+
+While faculty members want encourage you to share information related to your life experiences through discussion and written work, students should understand that faculty are required to report past and present sexual assault, domestic and interpersonal violence, stalking, and gender discrimination that is shared with them to the Title IX Coordinator so that the University can inform students of their rights, resources and support.  While you are encouraged to do so, you are not obligated to respond to outreach conducted as a result of a report to the Title IX Coordinator.
+
+If you need to speak with someone in confidence, who does not have an obligation to report to the Title IX Coordinator, UMBC has a number of Confidential Resources available to support you: 
+\begin{itemize}
+\item The Counseling Center (Main Campus): 410-455-2472 / After-Hours 410-455-3230 [Monday – Friday; 8:30 a.m. – 5 p.m.]
+\item	Center for Counseling and Consultation (Shady Grove Campus): 301-738-6273 (Messages checked hourly)  Online Appointment Request Form
+\item University Health Services: 410-455-2542 [Monday – Friday 8:30 a.m. – 5 p.m.]
+\item Pastoral Counseling via Interfaith Center: 410-455-3657; interfaith@umbc.edu [7 days a week; Fall and Spring 7 a.m. – 11 p.m.; Summer and Winter 8 a.m. – 8 p.m.]
+\end{itemize}
+\textbf{Other Resources:}
+\begin{itemize}
+\item	Women’s Center (for students of all genders): 410-455-2714; womenscenter@umbc.edu. [Monday – Thursday 9:30am-6pm and Friday 9:30am-4pm]
+\item  Shady Grove Student Resources, Maryland Resources, National Resources.
+\end{itemize}
+Child Abuse and Neglect:
+Please note that Maryland law and UMBC policy require that faculty report all disclosures or suspicions of child abuse or neglect to the Department of Social Services and/or the police.
+\subsection*{Pregnant and Parenting Students}
+
+UMBC’s Policy on Sexual Misconduct, Sexual Harassment and Gender Discrimination expressly prohibits all forms of Discrimination and Harassment on the basis of sex, including pregnancy. Resources for pregnant, parenting and breastfeeding students are available through the University’s Office of Equity and Inclusion.  Pregnant and parenting students are encouraged to contact the Title IX Coordinator to discuss plans and ensure ongoing access to their academic program with respect to a leave of absence or return following leave related to pregnancy, delivery, adoption, breastfeeding and/or the early months of parenting.
+Pregnant students and students in the early months of parenting may be entitled to accommodations under Title IX through the Office of Equity and Inclusion.
+In addition, students who are pregnant and have an impairment related to their pregnancy that qualifies as disability under the ADA may be entitled to accommodations through the Student Disability Service Office.
+\subsection*{Religious Observances \& Accommodations}
+
+UMBC Policy provides that students should not be penalized because of observances of their religious beliefs, and that students shall be given an opportunity, whenever feasible, to make up within a reasonable time any academic assignment that is missed due to individual participation in religious observances. It is the responsibility of the student to inform the instructor of any intended absences or requested modifications for religious observances in advance, and as early as possible. For questions or guidance regarding religious observance accommodations  please contact the Office of Equity and Inclusion at oei@umbc.edu.
+\subsection*{Hate, Bias, Discrimination and Harassment}
+
+UMBC values safety, cultural and ethnic diversity, social responsibility, lifelong learning, equity, and civic engagement.
+Consistent with these principles, UMBC Policy prohibits discrimination and harassment in its educational programs and activities or with respect to employment terms and conditions based on race, creed, color, religion, sex, gender, pregnancy, ancestry, age, gender identity or expression, national origin, veterans status, marital status, sexual orientation, physical or mental disability, or genetic information.
+
+Students (and faculty and staff) who experience discrimination, harassment, hate or bias or who have such matters reported to them should use the online reporting/referral form to report discrimination, hate or bias incidents. You may report incidents that happen to you anonymously. Please note that, if you report anonymously, the University’s ability to respond will be limited.
+
+
+
+\end{document}
+
+
+
